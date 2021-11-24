@@ -1,0 +1,9 @@
+{
+  "Name": "SDV Color Blind Mod",
+  "Author": "MudaBuddha",
+  "Version": "1.0.0",
+  "Description": "One or two sentences about the mod.",
+  "UniqueID": "MudaBuddha.SDVColorBlindMod",
+  "EntryDll": "SDVColorBlindMod.dll",
+  "UpdateKeys": []
+}
