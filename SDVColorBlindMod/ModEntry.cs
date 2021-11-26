@@ -5,7 +5,7 @@ using StardewModdingAPI.Events;
 using StardewModdingAPI.Utilities;
 using StardewValley;
 
-namespace YourProjectName
+namespace SDVColorBlindMod
 {
     /// <summary>The mod entry point.</summary>
     public class ModEntry : Mod
