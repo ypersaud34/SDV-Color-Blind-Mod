@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
 using StardewModdingAPI.Utilities;
@@ -19,6 +20,13 @@ namespace SDVColorBlindMod
         {
             helper.Events.Input.ButtonPressed += this.OnButtonPressed;
         }
+        public void Edit<T>(IAssetData asset)
+        {
+            var editor = asset.AsImage();
+
+            Texture2D sourceImage = this.Helper.Content.Load<Texture2D>("custom-texture.png", ContentSource.ModFolder);
+            editor.PatchImage(sourceImage, targetArea: new Rectangle(300, 100, 200, 200));
+        }
 
 
         /*********
@@ -36,5 +44,6 @@ namespace SDVColorBlindMod
             // print button presses to the console window
             this.Monitor.Log($"{Game1.player.Name} pressed {e.Button}.", LogLevel.Debug);
         }
+
     }
 }
