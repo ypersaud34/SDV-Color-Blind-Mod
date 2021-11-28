@@ -9,16 +9,18 @@ using StardewValley;
 namespace SDVColorBlindMod
 {
     /// <summary>The mod entry point.</summary>
-    public class ModEntry : Mod
+    public class ModEntry : Mod, IAssetLoader
     {
         /*********
         ** Public methods
         *********/
+        
         /// <summary>The mod entry point, called after the mod is first loaded.</summary>
         /// <param name="helper">Provides simplified APIs for writing mods.</param>
         public override void Entry(IModHelper helper)
         {
             helper.Events.Input.ButtonPressed += this.OnButtonPressed;
+
         }
         public void Edit<T>(IAssetData asset)
         {
@@ -31,7 +33,7 @@ namespace SDVColorBlindMod
         /// <param name="asset">Basic metadata about the asset being loaded.</param>
         public bool CanLoad<T>(IAssetInfo asset)
         {
-            if (asset.AssetNameEquals("Portraits/Abigail"))
+            if (asset.AssetNameEquals("TileSheets/crops"))
             {
                 return true;
             }
@@ -43,12 +45,11 @@ namespace SDVColorBlindMod
         /// <param name="asset">Basic metadata about the asset being loaded.</param>
         public T Load<T>(IAssetInfo asset)
         {
-            String assetName = asset.AssetName;
 
-            if (assetName.Equals("Portraits/Abigail"))
+            if (asset.AssetNameEquals("TileSheets/Crops"))
             {
 
-                return this.Helper.Content.Load<T>("assets/abigail-portaits.png", ContentSource.ModFolder);
+                return this.Helper.Content.Load<T>("assets/crops.png", ContentSource.ModFolder);
             }
 
             throw new InvalidOperationException($"Unexpected asset '{asset.AssetName}'.");
