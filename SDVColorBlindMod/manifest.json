@@ -1,10 +1,10 @@
-﻿{
-	"Name": "Stardew Valley Color Blind Mod",
-	"Author": "Group 11",
-	"Version": "1.0.0",
-	"Description": "One or two sentences about the mod",
-	"UniqueID": "Group11.SDVColorBlindMod",
-	"EntryDll": "SDVColorBlindMod.dll",
-	"MinimumApiVersion": "3.0.0",
-	"UpdateKeys": []
+{
+  "Name": "ColorBlindMod",
+  "Author": "Testing",
+  "Version": "1.0.0",
+  "Description": "Red-Green ColorBlindness",
+  "UniqueID": "Testing.SDVColorBlindMod",
+  "EntryDll": "SDVColorBlindMod.dll",
+  "MinimumApiVersion": "3.0.0",
+  "UpdateKeys": []
 }
