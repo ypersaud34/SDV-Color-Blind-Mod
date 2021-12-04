@@ -33,26 +33,33 @@ namespace SDVColorBlindMod
         /// <param name="asset">Basic metadata about the asset being loaded.</param>
         public bool CanLoad<T>(IAssetInfo asset)
         {
-            if (asset.AssetNameEquals("TileSheets/crops"))
-            {
-                return true;
+            switch(asset.AssetName()){
+                case "TileSheets/crops":
+                case "TileSheets/bushes":
+                case "Maps/springobjects":
+                    return true;
+                default: 
+                    return false;
+            
             }
-
-            return false;
         }
 
         /// <summary>Load a matched asset.</summary>
         /// <param name="asset">Basic metadata about the asset being loaded.</param>
         public T Load<T>(IAssetInfo asset)
         {
-
-            if (asset.AssetNameEquals("TileSheets/Crops"))
+            switch (asset.AssetName())
             {
+                case "TileSheets/crops":
+                    return this.Helper.Content.Load<T>("assets/crops.png", ContentSource.ModFolder);
+                case "TileSheets/bushes":
+                    return this.Helper.Content.Load<T>("assets/bushes.png", ContentSource.ModFolder);
+                case "Maps/springsobjects":
+                    return this.Helper.Content.Load<T>("assets/springobjects.png", ContentSource.ModFolder);;
+                default:
+                    throw new InvalidOperationException($"Unexpected asset '{asset.AssetName}'.");
 
-                return this.Helper.Content.Load<T>("assets/crops.png", ContentSource.ModFolder);
             }
-
-            throw new InvalidOperationException($"Unexpected asset '{asset.AssetName}'.");
         }
 
         /*********
