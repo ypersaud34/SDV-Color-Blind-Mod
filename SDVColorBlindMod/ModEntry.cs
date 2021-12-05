@@ -33,13 +33,13 @@ namespace SDVColorBlindMod
         /// <param name="asset">Basic metadata about the asset being loaded.</param>
         public bool CanLoad<T>(IAssetInfo asset)
         {
-            switch(asset.AssetName()){
-                case "TileSheets/crops":
-                case "TileSheets/bushes":
-                case "Maps/springobjects":
-                    return true;
-                default: 
-                    return false;
+            if (asset.AssetNameEquals("TileSheets/crops") ||
+               asset.AssetNameEquals("TileSheets/bushes") || 
+               asset.AssetNameEquals("Maps/springobjects")){
+
+                return true;
+            }
+                return false;
             
             }
         }
@@ -48,16 +48,21 @@ namespace SDVColorBlindMod
         /// <param name="asset">Basic metadata about the asset being loaded.</param>
         public T Load<T>(IAssetInfo asset)
         {
-            switch (asset.AssetName())
-            {
-                case "TileSheets/crops":
-                    return this.Helper.Content.Load<T>("assets/crops.png", ContentSource.ModFolder);
-                case "TileSheets/bushes":
-                    return this.Helper.Content.Load<T>("assets/bushes.png", ContentSource.ModFolder);
-                case "Maps/springsobjects":
-                    return this.Helper.Content.Load<T>("assets/springobjects.png", ContentSource.ModFolder);;
-                default:
-                    throw new InvalidOperationException($"Unexpected asset '{asset.AssetName}'.");
+
+        if (asset.AssetNameEquals("TileSheets/crops"))
+        {
+            return this.Helper.Content.Load<T>("assets/crops.png", ContentSource.ModFolder);
+        }
+        else if (asset.AssetNameEquals("TileSheets/bushes"))
+        {
+            return this.Helper.Content.Load<T>("assets/bushes.png", ContentSource.ModFolder);
+        }
+        else if (asset.AssetNameEquals("Maps/springsobjects"))
+        {
+            return this.Helper.Content.Load<T>("assets/springobjects.png", ContentSource.ModFolder);
+        }
+               
+         throw new InvalidOperationException($"Unexpected asset '{asset.AssetName}'.");
 
             }
         }
