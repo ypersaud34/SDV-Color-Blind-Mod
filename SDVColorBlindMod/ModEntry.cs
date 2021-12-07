@@ -11,26 +11,23 @@ namespace SDVColorBlindMod
  
     public class ModEntry : Mod, IAssetLoader
     {
-   
-
+        public override void Entry(IModHelper helper)
+        {
+            throw new NotImplementedException(); 
+        }
         public bool CanLoad<T>(IAssetInfo asset)
         {
             if (asset.AssetNameEquals("TileSheets/crops") ||
                 asset.AssetNameEquals("Maps/springobjects") ||
                 asset.AssetNameEquals("TileSheets/bushes") ||
+                asset.AssetNameEquals("TerrainFeatures/hoeDirtDark") ||
                 asset.AssetNameEquals("Maps/paths")
                 )
             {
-
                 return true;
             }
             return false;
 
-        }
-
-        public override void Entry(IModHelper helper)
-        {
-            throw new NotImplementedException();
         }
 
         public T Load<T>(IAssetInfo asset)
@@ -52,7 +49,10 @@ namespace SDVColorBlindMod
             {
                 return this.Helper.Content.Load<T>("assets/paths.png", ContentSource.ModFolder);
             }
-
+            if (asset.AssetNameEquals("TerrainFeatures/hoeDirtDark.png"))
+            {
+                return this.Helper.Content.Load<T>("assets/hoeDirtDark.png", ContentSource.ModFolder);
+            }
             throw new InvalidOperationException($"Unexpected asset '{asset.AssetName}'.");
 
         }
