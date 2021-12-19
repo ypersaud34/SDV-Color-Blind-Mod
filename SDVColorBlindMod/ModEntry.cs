@@ -20,7 +20,6 @@ namespace SDVColorBlindMod
             if (asset.AssetNameEquals("TileSheets/crops") ||
                 asset.AssetNameEquals("Maps/springobjects") ||
                 asset.AssetNameEquals("TileSheets/bushes") ||
-                asset.AssetNameEquals("TerrainFeatures/hoeDirtDark") ||
                 asset.AssetNameEquals("Maps/paths")
                 )
             {
@@ -49,10 +48,8 @@ namespace SDVColorBlindMod
             {
                 return this.Helper.Content.Load<T>("assets/paths.png", ContentSource.ModFolder);
             }
-            if (asset.AssetNameEquals("TerrainFeatures/hoeDirtDark.png"))
-            {
-                return this.Helper.Content.Load<T>("assets/hoeDirtDark.png", ContentSource.ModFolder);
-            }
+ 
+
             throw new InvalidOperationException($"Unexpected asset '{asset.AssetName}'.");
 
         }
